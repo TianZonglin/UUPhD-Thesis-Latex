@@ -1,4 +1,4 @@
-This is a clean version of PhD dissertation of Utrecht University. The structure of these tex files are listed as follows. If you're a PhD student from Utrecht University, you can easily to reuse the whole project to wirte your own thesis.
+This is a clean version of PhD dissertation of Utrecht University. The structure of these tex files is listed as follows. If you're a PhD student from Utrecht University, you can easily to reuse the whole project to write your own thesis.
 
 ```
 .\uuPhD-dissertation-clean
@@ -16,9 +16,9 @@ This is a clean version of PhD dissertation of Utrecht University. The structure
 │  ├─Contents           // include chapter folder
 │  ├─Bibliography           // references
 │  ├─Acknowledgments        // your bio and acknowledgment
-│  └─Colophon               // the content of last page, statement of thesis style
+│  └─Colophon               // the content of the last page, statement of thesis style
 ├─figures
-│  ├─chap01             // put related figures here, .eps or .pdf
+│  ├─chap01             // all images are .eps edited by Adobe Illustrator
 │  ├─......                     
 │  └─chap07      
 ├─Chapters
@@ -34,7 +34,7 @@ This is a clean version of PhD dissertation of Utrecht University. The structure
 
 ```
 
-I use [WinEdt](https://www.winedt.com/) to write and maintain this project, and if you are not familiar with Latex grammar, you can use [www.uinio.com/Math/LaTex](http://www.uinio.com/Math/LaTex/) as a handlebook to write your Tex document! Hope your thesis writing journey is happy and easy. 
+I use [WinEdt](https://www.winedt.com/) to write and maintain this project, and if you are not familiar with Latex grammar, you can use [www.uinio.com/Math/LaTex](http://www.uinio.com/Math/LaTex/) as a handbook to write your Tex document! Hope your thesis writing journey is happy and easy. 
 
 
 
