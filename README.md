@@ -8,8 +8,8 @@ This is a clean version of PhD dissertation of Utrecht University. The structure
 ├─fontback
 │  ├─Titlepage              // the first side of frontpage
 │  ├─Titleback              // the second side of frontpage (cover's explanation)
-│  ├─UU_Titlepage           // the first side of secondpage
-│  ├─UU_Titleback           // the second side of secondpage (comittee members)
+│  ├─UU_Titlepage           // the first side of next-page
+│  ├─UU_Titleback           // the second side of next-page (committee members)
 │  ├─Dedication         // uu doesn't need this
 │  ├─Abstract           // English version, then Detuch version
 │  ├─Publication        // put your paper list here
