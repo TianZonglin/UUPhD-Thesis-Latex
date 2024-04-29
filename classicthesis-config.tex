@@ -1,0 +1,346 @@
+\PassOptionsToPackage{eulerchapternumbers,listings, pdfspacing, subfig,beramono,thesispaper}{classicthesis}					
+
+
+%\usepackage{mathptmx}                  % use matching math font
+%\usepackage{times}                     % we use Times as the main font
+%\renewcommand*\ttdefault{txtt}         % a nicer typewriter font
+%\usepackage{tabu}                      % only used for the table example
+%\usepackage{amsfonts, amssymb} % used for mathbb{}
+%\usepackage{booktabs}                  % only used for the table example
+%\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+
+\usepackage{ifthen}
+\newboolean{enable-backrefs}
+\setboolean{enable-backrefs}{false}
+
+% Personal data
+\newcommand{\myTitle}{Explaining Projections of High-Dimensional Data \xspace}
+\newcommand{\mySubtitle}{~\xspace}
+\newcommand{\myName}{Zonglin Tian\xspace}
+\newcommand{\myUni}{Utrecht University\xspace}
+
+% Setup and useful commands
+\newcounter{dummy} 
+\newlength{\abcd} 
+\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\newcommand{\abbr}[1]{\textsc{\MakeLowercase{#1}}}
+
+\newlength{\figureHalf}\setlength{\figureHalf}{139.74pt}
+\newlength{\figureThird}\setlength{\figureThird}{90.32pt}
+\newlength{\figureFourth}\setlength{\figureFourth}{65.61pt}
+
+\newlength{\figureHalfBigSkip}\setlength{\figureHalfBigSkip}{129.8pt}
+\newlength{\figureThirdBigSkip}\setlength{\figureThirdBigSkip}{77.0667pt}
+\newlength{\figureFourthBigSkip}\setlength{\figureFourthBigSkip}{50.7pt}
+
+% More packages
+\usepackage{verbatim}
+\usepackage{printlen}
+\usepackage{makeidx}
+
+\usepackage[lining]{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage[libertine]{newtxmath}
+\usepackage{mathtools}
+%\usepackage[bb=pazo,bbscaled=0.94,cal=cm,calscaled=0.96]{mathalfa}
+\usepackage{bm}
+\usepackage{rotating}
+\usepackage{mdframed}			% Create frames
+
+
+%IVAPP23
+\usepackage{epsfig}
+%\usepackage{subcaption}
+\usepackage{calc}
+%\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+%\usepackage{pslatex}
+\usepackage{url}
+%\usepackage{apalike}
+\usepackage[bottom]{footmisc}
+
+% \usepackage[ruled,noline,noend]{algorithm2e}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\usepackage{sidecap}
+\usepackage{marginnote}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,positioning}
+\usepackage{tabulary}
+\usepackage{enumitem}
+
+\newenvironment{myabstract}%
+{\textsc{abstract:} \slshape\footnotesize }%
+{}
+
+\PassOptionsToPackage{utf8}{inputenc}	
+ \usepackage{inputenc}				
+
+\PassOptionsToPackage{dutch,english,portuguese}{babel}
+ \usepackage{babel}					
+
+% \PassOptionsToPackage{square,numbers,sort&compress}{natbib}
+\PassOptionsToPackage{round}{natbib}
+\usepackage{natbib}				
+
+\usepackage{scrhack} % fix warnings when using KOMA with listings package          
+\usepackage{xspace} % to get the spacing after macros right  
+\usepackage{mparhack} % get marginpar right
+\PassOptionsToPackage{printonlyused,smaller}{acronym}
+	\usepackage{acronym} 
+\ifdefined\bflabel
+	\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
+\else
+\fi
+
+
+% Setup floats: tables, (sub)figures, and captions
+\usepackage{tabularx} % better tables
+	\setlength{\extrarowheight}{3pt} % increase table row height
+\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+\newcommand{\myfloatalign}{\centering} % to be used with each float for alignment
+\usepackage{caption}
+\captionsetup{format=hang,font=small}
+\usepackage{subfig}  
+
+%Setup code listings
+\usepackage{listings} 
+\lstset{language=[LaTeX]Tex,%C++,
+    keywordstyle=\color{RoyalBlue},%\bfseries,
+    basicstyle=\small\ttfamily,
+    %identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\rmfamily,
+    numbers=none,%left,%
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=single,
+    belowcaptionskip=.75\baselineskip
+    %frame=L
+} 
+
+% PDFLaTeX, hyperreferences and citation backreferences
+\PassOptionsToPackage{pdftex,hyperfootnotes=false,pdfpagelabels,breaklinks}{hyperref}
+	\usepackage{hyperref}
+\pdfcompresslevel=9
+\pdfadjustspacing=1 
+\PassOptionsToPackage{pdftex}{graphicx}
+	\usepackage{graphicx} 
+\usepackage[capitalise]{cleveref}
+
+% Setup the style of the backrefs from the bibliography
+\newcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+\newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
+\newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
+\ifthenelse{\boolean{enable-backrefs}}%
+{%
+		\PassOptionsToPackage{hyperpageref}{backref}
+		\usepackage{backref} % to be loaded after hyperref package 
+		   \renewcommand{\backreftwosep}{ and~} % separate 2 pages
+		   \renewcommand{\backreflastsep}{, and~} % separate last of longer list
+		   \renewcommand*{\backref}[1]{}  % disable standard
+		   \renewcommand*{\backrefalt}[4]{% detailed backref
+		      \ifcase #1 %
+		         \backrefnotcitedstring%
+		      \or%
+		         \backrefcitedsinglestring{#2}%
+		      \else%
+		         \backrefcitedmultistring{#2}%
+		      \fi}%
+}{\relax}    
+
+% Hyperreferences
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,
+    urlcolor=black, linkcolor=black, citecolor=black, 
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}   
+
+% Setup autoreferences
+\makeatletter
+\@ifpackageloaded{babel}%
+    {%
+       \addto\extrasenglish{%
+					\renewcommand*{\figureautorefname}{Figure}%
+					\renewcommand*{\tableautorefname}{Table}%
+					\renewcommand*{\partautorefname}{Part}%
+					\renewcommand*{\chapterautorefname}{Chapter}%
+					\renewcommand*{\sectionautorefname}{Section}%
+					\renewcommand*{\subsectionautorefname}{Section}%
+					\renewcommand*{\subsubsectionautorefname}{Section}% 	
+				}%
+       \addto\extrasngerman{% 
+					\renewcommand*{\paragraphautorefname}{Absatz}%
+					\renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+					\renewcommand*{\footnoteautorefname}{Fu\"snote}%
+					\renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+					\renewcommand*{\theoremautorefname}{Theorem}%
+					\renewcommand*{\appendixautorefname}{Anhang}%
+					\renewcommand*{\equationautorefname}{Gleichung}%        
+					\renewcommand*{\itemautorefname}{Punkt}%
+				}%	
+			\providecommand{\subfigureautorefname}{\figureautorefname}%  			
+    }{\relax}
+\makeatother
+
+
+\listfiles
+
+\usepackage{classicthesis} 
+
+% Further adjustments (experimental)
+\usepackage{bibentry}
+\nobibliography*
+
+\providecommand{\doi}[1]{\abbr{DOI} \href{http://dx.doi.org/#1}{\urlstyle{same}\nolinkurl{#1}}}
+
+\emergencystretch=1em
+
+\newtheoremstyle{theoremStyle}
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {\itshape}                   % Body font
+    {}                           % Indent amount
+    {\scshape}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{theoremStyle}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheoremstyle{exampleStyle}
+    {0}                          % Space above
+    {0}                          % Space below
+    {}                           % Body font
+    {}                           % Indent amount
+    {\scshape}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exampleStyle}
+\newtheorem{example}[theorem]{Example}
+\usepackage{mdframed}
+\surroundwithmdframed[bottomline=false,topline=false,rightline=false,
+	linewidth=1pt,
+	linecolor=gray,
+	%innerleftmargin=7pt,
+	skipabove=\topsep,
+	skipbelow=0,
+	innertopmargin=0,
+	innerbottommargin=0]{example}
+
+% Counters
+\numberwithin{equation}{chapter}
+\numberwithin{theorem}{chapter}
+\numberwithin{figure}{chapter}
+
+% CRef names
+\crefname{algocf}{Alg.}{Algs.}
+\Crefname{algocf}{Algorithm}{Algorithms}
+
+\setlength{\marginparwidth}{8em}%
+
+% Personal commands
+\newcommand{\makenote}[1]{{ \color{red} [#1]}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\defaultwidth}{width=}
+
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\std}{std}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Val}{Val}
+
+\DeclareMathOperator*{\KL}{KL}
+\newcommand{\bs}{\bm}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+%% -----------------------------------------------
+% My own commands
+%% -----------------------------------------------
+
+\newcommand{\fold}[1]{\mathcal{#1}}
+\newcommand{\set}[1]{\mathbb{#1}}
+\newcommand{\vecx}[1]{\boldsymbol{#1}}
+\newcommand{\state}{\vecx{\phi}}
+
+\newcommand{\chref}[1]{\autoref{ch:#1}}
+\newcommand{\secref}[1]{\autoref{sec:#1}}
+\newcommand{\figref}[1]{\autoref{fig:#1}}
+\newcommand{\eqnref}[1]{\autoref{eqn:#1}}
+\newcommand{\tabref}[1]{\autoref{tab:#1}}
+\newcommand{\quadref}[1]{\autoref{quad:#1}}
+\newcommand{\parref}[1]{\autoref{par:#1}}	
+\newcommand{\coderef}[1]{\autoref{code:#1}}	
+\newcommand{\appref}[1]{\autoref{app:#1}}
+\newcommand{\itemref}[1]{\autoref{item:#1}}
+
+\hypersetup{
+	pdftitle={\myTitle}, 
+	pdfauthor={\myName},
+	pdfsubject={},
+	pdfcreator={},
+	pdfkeywords={}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+	linkcolor=blue,          	% color of internal links
+	citecolor=blue,        		% color of links to bibliography
+	filecolor=magenta,      	% color of file links
+	urlcolor=blue,
+	bookmarksdepth=4,
+	plainpages = false,
+  	linktocpage
+}
+
+% Just right frame
+\newmdenv[leftline=false, topline=false, bottomline=false]{rightframe}
+
+% Left and bottom frame
+\newmdenv[topline=false, rightline=false]{leftbot}
+
+% Top and bottom frame
+\newmdenv[rightline=false, leftline=false]{topbot}
+
+\newcommand{\hyp}[1]{
+	\begin{topbot}
+		\vspace{.5cm}	
+		% \setlength{\parindent}{4em}
+		% \setlength{\parskip}{2em}
+		\noindent
+		\emph{Hyphotesis: ``{#1}''}.
+		\vspace{.5cm}
+	\end{topbot}
+}
+
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\ie}{\emph{i.e.}}

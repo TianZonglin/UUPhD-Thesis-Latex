@@ -1,0 +1,15 @@
+\refstepcounter{dummy}
+\pdfbookmark[0]{\contentsname}{tableofcontents}
+
+\setcounter{tocdepth}{4} 
+\setcounter{secnumdepth}{4}
+
+\manualmark
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
+
+\tableofcontents 
+
+\automark[section]{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
+
